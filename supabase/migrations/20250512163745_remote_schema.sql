@@ -1357,7 +1357,6 @@ ALTER TABLE ONLY "public"."users"
     ADD CONSTRAINT "users_email_key" UNIQUE ("email");
 ALTER TABLE ONLY "public"."users"
     ADD CONSTRAINT "users_pkey" PRIMARY KEY ("id");
-CREATE OR REPLACE TRIGGER "criandoCampanha" AFTER INSERT ON "public"."Campanhas" FOR EACH ROW EXECUTE FUNCTION "supabase_functions"."http_request"('https://aurea-one.bubbleapps.io/version-823as/api/1.1/wf/criargrupoa/initialize', 'POST', '{"Content-type":"application/json"}', '{}', '5000');
 ALTER TABLE ONLY "public"."Ads"
     ADD CONSTRAINT "Ads_campanhaId_fkey" FOREIGN KEY ("campanhaId") REFERENCES "public"."Campanhas"("id") ON DELETE CASCADE;
 ALTER TABLE ONLY "public"."Ads"
