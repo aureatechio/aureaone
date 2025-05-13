@@ -1,0 +1,1 @@
+CREATE SCHEMA IF NOT EXISTS supabase_functions; CREATE EXTENSION IF NOT EXISTS http WITH SCHEMA supabase_functions;
