@@ -899,15 +899,15 @@ GROUP BY "indexOferta", "valorCampo", "fieldCreatomate", "visivelUsuario";
 
 CREATE OR REPLACE VIEW public."viewOfertaEstruturada" AS
 SELECT 
-  previewmidiaid::text,
-  valorcampo,
-  campotemplatesetupid::text,
-  fieldcreatomate,
+  "previewMidiaId"::text as previewmidiaid,
+  "valorCampo" as valorcampo,
+  "campoTemplateSetupId"::text as campotemplatesetupid,
+  "fieldCreatomate" as fieldcreatomate,
   created_at,
-  visivelusuario,
+  "visivelUsuario" as visivelusuario,
   "indexOferta",
   id::text,
-  templateid::text
+  "templateId"::text as templateid
 FROM "SateliteCamposFormPreviewMidia";
 
 CREATE OR REPLACE VIEW public."viewSocialAccount" AS
