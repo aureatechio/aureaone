@@ -10,7 +10,23 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA "extensions";
 CREATE EXTENSION IF NOT EXISTS "vector" WITH SCHEMA "public";
 CREATE EXTENSION IF NOT EXISTS "http" WITH SCHEMA "supabase_functions";
 
--- Create ENUM types
+-- Create ALL ENUM types first
+CREATE TYPE "osStatus" AS ENUM (
+  'Ativo',
+  'Inativo'
+);
+
+CREATE TYPE "osStatusRender" AS ENUM (
+  'Renderizando',
+  'Finalizado',
+  'Erro'
+);
+
+CREATE TYPE "osTrafficType" AS ENUM (
+  'Organico',
+  'Pago'
+);
+
 CREATE TYPE "osCategoria" AS ENUM (
   'Cabeca',
   'CabecaCelebridade',
@@ -61,22 +77,6 @@ CREATE TYPE "osPlataformas" AS ENUM (
   'Facebook',
   'Instagram',
   'Tiktok'
-);
-
-CREATE TYPE "osStatus" AS ENUM (
-  'Ativo',
-  'Inativo'
-);
-
-CREATE TYPE "osStatusRender" AS ENUM (
-  'Renderizando',
-  'Finalizado',
-  'Erro'
-);
-
-CREATE TYPE "osTrafficType" AS ENUM (
-  'Organico',
-  'Pago'
 );
 
 CREATE TYPE "osTypeField" AS ENUM (
