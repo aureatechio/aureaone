@@ -925,18 +925,18 @@ FROM "PaginasAnuncio" p;
 
 CREATE OR REPLACE VIEW public."viewSocialAccounts_ads" AS
 SELECT 
-  plataforma::osPlataformas,
-  status::osStatus,
-  empresa,
-  id,
-  "contaAds",
-  access_token,
-  "nomePagina",
-  "idPagina",
-  "fotoPerfil",
-  creator,
-  "dataConexao"::date
-FROM "PaginasAnuncio";
+  p."contaBusinessPaginaId"::text as "plataforma",
+  p."status"::osStatus as "status",
+  p."empresa" as "empresa",
+  p."id" as "id",
+  p."idContaAds" as "contaAds",
+  p."accessToken" as "access_token",
+  p."nomePagina" as "nomePagina",
+  p."idPagina" as "idPagina",
+  p."pictureUrl" as "fotoPerfil",
+  p."creator" as "creator",
+  p."createdDate" as "dataConexao"
+FROM "PaginasAnuncio" p;
 
 CREATE OR REPLACE VIEW public.view_contas_plataforma AS
 SELECT 
