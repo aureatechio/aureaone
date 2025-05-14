@@ -12,40 +12,40 @@ CREATE EXTENSION IF NOT EXISTS "http" WITH SCHEMA "supabase_functions";
 
 -- Drop existing types if they exist
 DO $$ BEGIN
-    DROP TYPE IF EXISTS "osStatus" CASCADE;
-    DROP TYPE IF EXISTS "osStatusRender" CASCADE;
-    DROP TYPE IF EXISTS "osTrafficType" CASCADE;
-    DROP TYPE IF EXISTS "osCategoria" CASCADE;
-    DROP TYPE IF EXISTS "osConteudo" CASCADE;
-    DROP TYPE IF EXISTS "osFieldTypeStandard" CASCADE;
-    DROP TYPE IF EXISTS "osFormatos" CASCADE;
-    DROP TYPE IF EXISTS "osMaterial" CASCADE;
-    DROP TYPE IF EXISTS "osPlataformas" CASCADE;
-    DROP TYPE IF EXISTS "osTypeField" CASCADE;
-    DROP TYPE IF EXISTS "osTypeMidia" CASCADE;
-    DROP TYPE IF EXISTS "osTypeNotification" CASCADE;
+    DROP TYPE IF EXISTS osStatus CASCADE;
+    DROP TYPE IF EXISTS osStatusRender CASCADE;
+    DROP TYPE IF EXISTS osTrafficType CASCADE;
+    DROP TYPE IF EXISTS osCategoria CASCADE;
+    DROP TYPE IF EXISTS osConteudo CASCADE;
+    DROP TYPE IF EXISTS osFieldTypeStandard CASCADE;
+    DROP TYPE IF EXISTS osFormatos CASCADE;
+    DROP TYPE IF EXISTS osMaterial CASCADE;
+    DROP TYPE IF EXISTS osPlataformas CASCADE;
+    DROP TYPE IF EXISTS osTypeField CASCADE;
+    DROP TYPE IF EXISTS osTypeMidia CASCADE;
+    DROP TYPE IF EXISTS osTypeNotification CASCADE;
 EXCEPTION
     WHEN others THEN null;
 END $$;
 
 -- Create ALL ENUM types first
-CREATE TYPE "osStatus" AS ENUM (
+CREATE TYPE osStatus AS ENUM (
   'Ativo',
   'Inativo'
 );
 
-CREATE TYPE "osStatusRender" AS ENUM (
+CREATE TYPE osStatusRender AS ENUM (
   'Renderizando',
   'Finalizado',
   'Erro'
 );
 
-CREATE TYPE "osTrafficType" AS ENUM (
+CREATE TYPE osTrafficType AS ENUM (
   'Organico',
   'Pago'
 );
 
-CREATE TYPE "osCategoria" AS ENUM (
+CREATE TYPE osCategoria AS ENUM (
   'Cabeca',
   'CabecaCelebridade',
   'Assinatura',
@@ -62,7 +62,7 @@ CREATE TYPE "osCategoria" AS ENUM (
   'png'
 );
 
-CREATE TYPE "osConteudo" AS ENUM (
+CREATE TYPE osConteudo AS ENUM (
   'Feed',
   'Reels',
   'Storys',
@@ -71,13 +71,13 @@ CREATE TYPE "osConteudo" AS ENUM (
   'Imagem'
 );
 
-CREATE TYPE "osFieldTypeStandard" AS ENUM (
+CREATE TYPE osFieldTypeStandard AS ENUM (
   'Text',
   'Currency',
   'Date'
 );
 
-CREATE TYPE "osFormatos" AS ENUM (
+CREATE TYPE osFormatos AS ENUM (
   '16x9',
   '9x16',
   '1x1',
@@ -85,19 +85,19 @@ CREATE TYPE "osFormatos" AS ENUM (
   'Null'
 );
 
-CREATE TYPE "osMaterial" AS ENUM (
+CREATE TYPE osMaterial AS ENUM (
   'Filme 15s',
   'Filme 30s',
   'Null'
 );
 
-CREATE TYPE "osPlataformas" AS ENUM (
+CREATE TYPE osPlataformas AS ENUM (
   'Facebook',
   'Instagram',
   'Tiktok'
 );
 
-CREATE TYPE "osTypeField" AS ENUM (
+CREATE TYPE osTypeField AS ENUM (
   'cta',
   'oferta1ProdutoText',
   'oferta1ProdutoImg',
@@ -140,13 +140,13 @@ CREATE TYPE "osTypeField" AS ENUM (
   'Header'
 );
 
-CREATE TYPE "osTypeMidia" AS ENUM (
+CREATE TYPE osTypeMidia AS ENUM (
   'Video',
   'Estatica',
   'Radio'
 );
 
-CREATE TYPE "osTypeNotification" AS ENUM (
+CREATE TYPE osTypeNotification AS ENUM (
   'PreviewMidia',
   'ErrorRender',
   'NewTemplate'
