@@ -887,11 +887,15 @@ CREATE TABLE IF NOT EXISTS public.users (
 
 -- Create Views
 CREATE OR REPLACE VIEW public."viewOfertaAgrupada" AS
-SELECT campos::json, "indexOferta"
-FROM (
-  SELECT campos, "indexOferta"
-  FROM "SateliteCamposFormPreviewMidia"
-) subquery;
+SELECT 
+  jsonb_build_object(
+    'valorCampo', "valorCampo",
+    'fieldCreatomate', "fieldCreatomate",
+    'visivelUsuario', "visivelUsuario"
+  )::json as campos,
+  "indexOferta"
+FROM "SateliteCamposFormPreviewMidia"
+GROUP BY "indexOferta", "valorCampo", "fieldCreatomate", "visivelUsuario";
 
 CREATE OR REPLACE VIEW public."viewOfertaEstruturada" AS
 SELECT 
