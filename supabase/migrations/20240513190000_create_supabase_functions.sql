@@ -912,16 +912,16 @@ FROM "SateliteCamposFormPreviewMidia";
 
 CREATE OR REPLACE VIEW public."viewSocialAccount" AS
 SELECT 
-  plataforma::osPlataformas,
-  creator,
-  "fotoPerfil",
-  "idPagina",
-  "nomePagina",
-  access_token,
-  id,
-  empresa,
-  status::osStatus
-FROM "PaginasAnuncio";
+  p."contaBusinessPaginaId" as "idContaBusiness",
+  p.creator as "criador",
+  p."fotoPerfil" as "fotoPerfil",
+  p."idPagina" as "idPagina",
+  p."nomePagina" as "nomePagina",
+  p."accessToken" as "tokenAcesso",
+  p.id as "id",
+  p.empresa as "empresa",
+  p.status::osStatus as "status"
+FROM "PaginasAnuncio" p;
 
 CREATE OR REPLACE VIEW public."viewSocialAccounts_ads" AS
 SELECT 
