@@ -914,7 +914,7 @@ CREATE OR REPLACE VIEW public."viewSocialAccount" AS
 SELECT 
   p."contaBusinessPaginaId" as "idContaBusiness",
   p."creator" as "criador",
-  p."fotoPerfil" as "fotoPerfil",
+  p."pictureUrl" as "fotoPerfil",
   p."idPagina" as "idPagina",
   p."nomePagina" as "nomePagina",
   p."accessToken" as "tokenAcesso",
