@@ -1,3 +1,6 @@
+-- Create required schemas
+CREATE SCHEMA IF NOT EXISTS "supabase_functions";
+
 -- Enable required extensions
 CREATE EXTENSION IF NOT EXISTS "pg_graphql" WITH SCHEMA "graphql";
 CREATE EXTENSION IF NOT EXISTS "pg_net" WITH SCHEMA "extensions";
