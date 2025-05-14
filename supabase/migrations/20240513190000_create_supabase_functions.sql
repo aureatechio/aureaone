@@ -10,6 +10,24 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA "extensions";
 CREATE EXTENSION IF NOT EXISTS "vector" WITH SCHEMA "public";
 CREATE EXTENSION IF NOT EXISTS "http" WITH SCHEMA "supabase_functions";
 
+-- Drop existing types if they exist
+DO $$ BEGIN
+    DROP TYPE IF EXISTS "osStatus" CASCADE;
+    DROP TYPE IF EXISTS "osStatusRender" CASCADE;
+    DROP TYPE IF EXISTS "osTrafficType" CASCADE;
+    DROP TYPE IF EXISTS "osCategoria" CASCADE;
+    DROP TYPE IF EXISTS "osConteudo" CASCADE;
+    DROP TYPE IF EXISTS "osFieldTypeStandard" CASCADE;
+    DROP TYPE IF EXISTS "osFormatos" CASCADE;
+    DROP TYPE IF EXISTS "osMaterial" CASCADE;
+    DROP TYPE IF EXISTS "osPlataformas" CASCADE;
+    DROP TYPE IF EXISTS "osTypeField" CASCADE;
+    DROP TYPE IF EXISTS "osTypeMidia" CASCADE;
+    DROP TYPE IF EXISTS "osTypeNotification" CASCADE;
+EXCEPTION
+    WHEN others THEN null;
+END $$;
+
 -- Create ALL ENUM types first
 CREATE TYPE "osStatus" AS ENUM (
   'Ativo',
