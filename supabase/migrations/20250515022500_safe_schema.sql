@@ -13,25 +13,167 @@ EXCEPTION
 END $$;
 
 DO $$ BEGIN
-    CREATE TYPE "osFormatos" AS ENUM ('16x9', '9x16', '1x1', '4x5');
+    CREATE TYPE "osFormatos" AS ENUM ('16x9', '9x16', '1x1', '4x5', 'Null');
 EXCEPTION
     WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
-    CREATE TYPE "user_status" AS ENUM ('PENDING', 'ACTIVE', 'INACTIVE');
+    CREATE TYPE "osCategoria" AS ENUM (
+        'Cabeca',
+        'CabecaCelebridade',
+        'Assinatura',
+        'AssinaturaCelebridade',
+        'BackgroundOferta',
+        'Trilha',
+        'Selo',
+        'Celebridades',
+        'audioAssinaturaLockoff',
+        'Paradinha',
+        'ParadinhaCelebridade',
+        'Chamada',
+        'audioChamadaLockoff',
+        'png'
+    );
 EXCEPTION
     WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
-    CREATE TYPE "osTypeMidia" AS ENUM ('BACKGROUND', 'CABECA', 'ASSINATURA', 'BACKGROUND_OFERTA');
+    CREATE TYPE "osConteudo" AS ENUM (
+        'Feed',
+        'Reels',
+        'Storys',
+        'Carrossel',
+        'Video',
+        'Imagem'
+    );
 EXCEPTION
     WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
-    CREATE TYPE "osTypeNotification" AS ENUM ('RENDER_COMPLETE', 'RENDER_ERROR');
+    CREATE TYPE "osFieldTypeStandard" AS ENUM (
+        'Text',
+        'Currency',
+        'Date'
+    );
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    CREATE TYPE "osMaterial" AS ENUM (
+        'Filme 15s',
+        'Filme 30s',
+        'Null'
+    );
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    CREATE TYPE "osPlataformas" AS ENUM (
+        'Facebook',
+        'Instagram',
+        'Tiktok'
+    );
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    CREATE TYPE "osStatusRender" AS ENUM (
+        'Renderizando',
+        'Finalizado',
+        'Erro'
+    );
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    CREATE TYPE "osTrafficType" AS ENUM (
+        'Organico',
+        'Pago'
+    );
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    CREATE TYPE "osTypeField" AS ENUM (
+        'cta',
+        'oferta1ProdutoText',
+        'oferta1ProdutoImg',
+        'oferta1ProdutoAudio',
+        'oferta1PrecoReais',
+        'oferta1PrecoCentavos',
+        'oferta1AudioPreco',
+        'oferta1UnidadeMedida',
+        'oferta2ProdutoText',
+        'oferta2ProdutoImg',
+        'oferta2ProdutoAudio',
+        'oferta2PrecoReais',
+        'oferta2PrecoCentavos',
+        'oferta2AudioPreco',
+        'oferta2UnidadeMedida',
+        'oferta3ProdutoText',
+        'oferta3ProdutoImg',
+        'oferta3ProdutoAudio',
+        'oferta3PrecoReais',
+        'oferta3PrecoCentavos',
+        'oferta3AudioPreco',
+        'oferta3UnidadeMedida',
+        'oferta4ProdutoText',
+        'oferta4ProdutoImg',
+        'oferta4ProdutoAudio',
+        'oferta4PrecoReais',
+        'oferta4PrecoCentavos',
+        'oferta4AudioPreco',
+        'oferta4UnidadeMedida',
+        'oferta5ProdutoText',
+        'oferta5ProdutoImg',
+        'oferta5ProdutoAudio',
+        'oferta5PrecoReais',
+        'oferta5PrecoCentavos',
+        'oferta5AudioPreco',
+        'oferta5UnidadeMedida',
+        'Selo',
+        'Celebridade',
+        'CTA',
+        'Header'
+    );
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    CREATE TYPE "osTypeMidia" AS ENUM (
+        'Video',
+        'Estatica',
+        'Radio'
+    );
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    CREATE TYPE "osTypeNotification" AS ENUM (
+        'PreviewMidia',
+        'ErrorRender',
+        'NewTemplate'
+    );
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    CREATE TYPE "user_status" AS ENUM (
+        'ACTIVE',
+        'INACTIVE',
+        'PENDING'
+    );
 EXCEPTION
     WHEN duplicate_object THEN null;
 END $$;
