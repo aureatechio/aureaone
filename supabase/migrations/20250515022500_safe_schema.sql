@@ -355,31 +355,31 @@ CREATE TABLE IF NOT EXISTS "PreConfiguracaoPost" (
 );
 
 CREATE TABLE IF NOT EXISTS "PreviewMidia" (
-    createdBy character varying,
-    templateId uuid,
-    filterCeleb text,
-    categoriaSelecionada text,
-    listMAssinatura text[],
-    textoLegal text,
-    creator text,
-    listMBackgroundOfertas text[],
-    listMCabeca text[],
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    testeMauro jsonb,
-    editFinalizada boolean,
-    createdDate timestamp without time zone DEFAULT now(),
-    mSelo character varying(255),
-    listRender text[],
-    listOfertas text[],
-    osStatusFilme character varying(50),
-    geoLocalizacao text,
-    empresa uuid,
-    listMaterial text[],
-    listMCelebridades text[],
-    listPraca text,
-    listMBackgroundOferta text[],
-    listTypeMidia text[],
-    uuid uuid
+    "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+    "listMCabeca" uuid[],
+    "listMBackgroundOfertas" uuid[],
+    "listMAssinatura" uuid[],
+    "listMBackgroundOferta" uuid[],
+    "listMCelebridades" uuid[],
+    "listOfertas" uuid[],
+    "listTypeMidia" "osTypeMidia"[],
+    "listMaterial" "osTypeMidia"[],
+    "listRender" uuid[],
+    "listPraca" text,
+    "geoLocalizacao" text,
+    "osStatusFilme" character varying,
+    "mSelo" character varying,
+    "textoLegal" text,
+    "createdBy" character varying,
+    "createdDate" timestamp without time zone DEFAULT now(),
+    "uuid" uuid,
+    "creator" text,
+    "empresa" uuid,
+    "templateId" uuid,
+    "testeMauro" jsonb,
+    "editFinalizada" boolean,
+    "filterCeleb" text,
+    "categoriaSelecionada" text
 );
 
 CREATE TABLE IF NOT EXISTS "Produto" (
@@ -414,40 +414,40 @@ CREATE TABLE IF NOT EXISTS "Publico" (
 );
 
 CREATE TABLE IF NOT EXISTS "Render" (
-    mCelebridade uuid,
-    nameRender text,
-    errorMsg text,
-    idCreatomateTemplate text,
-    filterCeleb text,
-    thumbnailUrl text,
-    mTrilhaUrl text,
-    mAssinaturaUrl text,
-    mBackgroundUrl text,
-    mCabecaUrl text,
-    creator text,
-    geoLocalizacao text,
-    colorText text,
-    videoUrl text,
-    status character varying(50),
-    mBackgroundOferta uuid,
-    mCabeca uuid,
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    listOfertas uuid,
-    templateId2 uuid,
-    templateId uuid,
-    mAssinatura uuid,
-    mBackgroundEstatica uuid,
-    renderNoticado boolean DEFAULT false,
-    postAgendado boolean DEFAULT false,
-    osStatusRender text,
-    sateliteTemplateFormatoId uuid,
-    osFormatos osFormatos,
-    previewMidiaId uuid,
-    empresa uuid,
-    updatedAt timestamp with time zone,
-    createdAt timestamp without time zone DEFAULT (now() AT TIME ZONE 'America/Sao_Paulo'::text),
-    osTypeMidia osTypeMidia,
-    templateFormatoId uuid
+    "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+    "mCabeca" uuid,
+    "mBackgroundOferta" uuid,
+    "mAssinatura" uuid,
+    "mBackgroundEstatica" uuid,
+    "mCelebridade" uuid,
+    "templateId" uuid,
+    "templateId2" uuid,
+    "status" character varying,
+    "videoUrl" text,
+    "colorText" text,
+    "listOfertas" uuid,
+    "templateFormatoId" uuid,
+    "osTypeMidia" "osTypeMidia",
+    "createdAt" timestamp without time zone DEFAULT (now() AT TIME ZONE 'America/Sao_Paulo'::text),
+    "updatedAt" timestamp with time zone,
+    "geoLocalizacao" text,
+    "creator" text,
+    "empresa" uuid,
+    "mCabecaUrl" text,
+    "mBackgroundUrl" text,
+    "mAssinaturaUrl" text,
+    "mTrilhaUrl" text,
+    "previewMidiaId" uuid,
+    "thumbnailUrl" text,
+    "osFormatos" "osFormatos",
+    "filterCeleb" text,
+    "sateliteTemplateFormatoId" uuid,
+    "idCreatomateTemplate" text,
+    "osStatusRender" "osStatus",
+    "errorMsg" text,
+    "postAgendado" boolean DEFAULT false,
+    "renderNoticado" boolean DEFAULT false,
+    "nameRender" text
 );
 
 CREATE TABLE IF NOT EXISTS "SateliteCamposFormPreviewMidia" (
@@ -479,66 +479,66 @@ CREATE TABLE IF NOT EXISTS "SatelitePreviewMidiaTemplate" (
 );
 
 CREATE TABLE IF NOT EXISTS "SateliteTemplateFormato" (
-    osTypeMidia osTypeMidia,
-    name text,
-    idCreatomateTemplate text,
-    urlThumb text,
-    categoriaSelecionada text,
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    selectClientFront boolean DEFAULT false,
-    previewMidiaId uuid NOT NULL,
-    templateId uuid NOT NULL,
-    selectClient boolean DEFAULT true,
-    templateFormatoSetupId uuid NOT NULL,
-    active boolean,
-    created_at timestamp without time zone DEFAULT now(),
-    osFormatos osFormatos
+    "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+    "previewMidiaId" uuid NOT NULL,
+    "templateId" uuid NOT NULL,
+    "templateFormatoSetupId" uuid NOT NULL,
+    "created_at" timestamp without time zone DEFAULT now(),
+    "idCreatomateTemplate" text,
+    "osFormatos" "osFormatos",
+    "osTypeMidia" "osTypeMidia",
+    "active" boolean,
+    "urlThumb" text,
+    "name" text,
+    "selectClient" boolean DEFAULT true,
+    "selectClientFront" boolean DEFAULT false,
+    "categoriaSelecionada" "osTypeMidia"
 );
 
 CREATE TABLE IF NOT EXISTS "Template" (
-    listMmidias text[],
-    osTypeMidia text[],
-    osMaterial text[],
-    collumn text[],
-    createdDate timestamp without time zone DEFAULT now(),
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    active boolean DEFAULT true,
-    optionText text,
-    colorLetras text,
-    thumbUrl text
+    "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+    "active" boolean DEFAULT true,
+    "colorLetras" text,
+    "thumbUrl" text,
+    "optionText" text,
+    "createdDate" timestamp without time zone DEFAULT now(),
+    "osMaterial" "osTypeMidia"[],
+    "osTypeMidia" "osTypeMidia"[],
+    "listMmidias" uuid[],
+    "collumn" text[]
 );
 
 CREATE TABLE IF NOT EXISTS "TemplateFormatoSetup" (
-    urlThumb text,
-    previa text,
-    jsonData text,
-    osRedeSociais character varying(50),
-    name text,
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    active boolean DEFAULT true,
-    tiposCampanha uuid,
-    creator uuid,
-    osTypeMidia osTypeMidia,
-    osFormato osFormatos DEFAULT '16x9'::osFormatos,
-    templateId uuid DEFAULT gen_random_uuid(),
-    editaCelebridade boolean,
-    editarOferta boolean,
-    idCreatomate text,
-    quantidadeOfertas text
+    "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+    "active" boolean DEFAULT true,
+    "tiposCampanha" uuid,
+    "jsonData" text,
+    "osRedeSociais" character varying,
+    "name" text,
+    "creator" uuid,
+    "osTypeMidia" "osTypeMidia",
+    "idCreatomate" text,
+    "osFormato" "osFormatos" DEFAULT '16x9',
+    "templateId" uuid DEFAULT gen_random_uuid(),
+    "urlThumb" text,
+    "quantidadeOfertas" text,
+    "editaCelebridade" boolean,
+    "editarOferta" boolean,
+    "previa" text
 );
 
 CREATE TABLE IF NOT EXISTS "Tiktok" (
-    status osStatus NOT NULL DEFAULT 'Ativo',
-    createdDate date DEFAULT CURRENT_DATE,
-    empresa uuid,
-    creator text,
-    identifyId text,
-    accessToken text,
-    nomeUsuario text,
-    contaAds text,
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    fotoPerfil text,
-    refreshToken text
+    "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+    "creator" text,
+    "empresa" uuid,
+    "createdDate" date DEFAULT CURRENT_DATE,
+    "accessToken" text,
+    "refreshToken" text,
+    "fotoPerfil" text,
+    "nomeUsuario" text,
+    "status" "osStatus" NOT NULL DEFAULT 'Ativo',
+    "identifyId" text,
+    "contaAds" text
 );
 
 CREATE TABLE IF NOT EXISTS "TiposAnuncio" (
@@ -648,12 +648,12 @@ CREATE TABLE IF NOT EXISTS "listasDeOfertas" (
 );
 
 CREATE TABLE IF NOT EXISTS "logNotificacao" (
-    creator text,
-    id uuid NOT NULL DEFAULT gen_random_uuid(),
-    created_at timestamp with time zone NOT NULL DEFAULT (now() AT TIME ZONE 'America/Sao_Paulo'::text),
-    osTypeNotification osTypeNotification,
-    previewMidiaId uuid DEFAULT gen_random_uuid(),
-    visualizado boolean DEFAULT false
+    "created_at" timestamp with time zone NOT NULL DEFAULT (now() AT TIME ZONE 'America/Sao_Paulo'::text),
+    "previewMidiaId" uuid DEFAULT gen_random_uuid(),
+    "creator" text,
+    "osTypeNotification" "osTypeNotification",
+    "id" uuid NOT NULL DEFAULT gen_random_uuid(),
+    "visualizado" boolean DEFAULT false
 );
 
 CREATE TABLE IF NOT EXISTS "maudioPrecos" (
@@ -678,12 +678,12 @@ CREATE TABLE IF NOT EXISTS "mensagensChat" (
 );
 
 CREATE TABLE IF NOT EXISTS "midiasTeste" (
-    formato osFormatos,
-    midiaType osTypeMidia,
-    url_midia text,
-    thumbnail text,
-    created_at timestamp with time zone NOT NULL DEFAULT now(),
-    id uuid NOT NULL DEFAULT gen_random_uuid()
+    "id" uuid NOT NULL DEFAULT gen_random_uuid(),
+    "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "url_midia" text,
+    "thumbnail" text,
+    "formato" "osFormatos",
+    "midiaType" "osTypeMidia"
 );
 
 CREATE TABLE IF NOT EXISTS "n8n_chat_histories" (
@@ -735,25 +735,25 @@ CREATE TABLE IF NOT EXISTS "orders" (
 );
 
 CREATE TABLE IF NOT EXISTS "postagens" (
-    data_postagem timestamp with time zone DEFAULT now(),
-    programado boolean,
-    midia_type osTypeMidia,
-    formato osFormatos,
-    empresa uuid,
-    created_at timestamp with time zone NOT NULL DEFAULT now(),
-    id uuid NOT NULL DEFAULT gen_random_uuid(),
-    hashtags text,
-    creator text,
-    url_midia text,
-    plataforma text,
-    thumbnail text,
-    status text DEFAULT 'postado'::text,
-    nome_campanha text,
-    conteudo text,
-    id_social_account text,
-    descricao text,
-    id_campanha uuid,
-    traffic_type text
+    "id" uuid NOT NULL DEFAULT gen_random_uuid(),
+    "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "creator" text,
+    "empresa" uuid,
+    "url_midia" text,
+    "formato" "osFormatos",
+    "midia_type" "osTypeMidia",
+    "plataforma" text,
+    "thumbnail" text,
+    "programado" boolean,
+    "data_postagem" timestamp with time zone DEFAULT now(),
+    "nome_campanha" text,
+    "traffic_type" "osTypeMidia",
+    "conteudo" text,
+    "id_social_account" text,
+    "descricao" text,
+    "hashtags" text,
+    "status" text DEFAULT 'postado'::text,
+    "id_campanha" uuid
 );
 
 CREATE TABLE IF NOT EXISTS "products" (
@@ -775,13 +775,13 @@ CREATE TABLE IF NOT EXISTS "social_accounts" (
 );
 
 CREATE TABLE IF NOT EXISTS "users" (
-    updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
-    created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    pictureUrl text,
-    name text,
-    email text NOT NULL,
-    status user_status DEFAULT 'PENDING'
+    "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+    "email" text NOT NULL,
+    "name" text,
+    "created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
+    "pictureUrl" text,
+    "status" "user_status" DEFAULT 'PENDING'
 );
 
 CREATE TABLE IF NOT EXISTS "viewOfertaAgrupada" (
@@ -802,16 +802,16 @@ CREATE TABLE IF NOT EXISTS "viewOfertaEstruturada" (
 );
 
 CREATE TABLE IF NOT EXISTS "viewSocialAccount" (
-    status user_status,
-    updated_at timestamp with time zone,
-    user_id uuid,
-    email text,
-    provider_id text,
-    name text,
-    pictureUrl text,
-    created_at timestamp with time zone,
-    id uuid,
-    provider text
+    "id" uuid,
+    "provider" text,
+    "provider_id" text,
+    "created_at" timestamp with time zone,
+    "updated_at" timestamp with time zone,
+    "user_id" uuid,
+    "email" text,
+    "name" text,
+    "pictureUrl" text,
+    "status" "user_status"
 );
 
 CREATE TABLE IF NOT EXISTS "viewSocialAccounts_ads" (
