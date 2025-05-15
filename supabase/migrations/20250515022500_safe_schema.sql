@@ -299,10 +299,10 @@ CREATE TABLE IF NOT EXISTS "MMidias" (
     active boolean DEFAULT true,
     templateId uuid,
     categoryId uuid,
-    osCategoria USER-DEFINED,
-    osMaterial USER-DEFINED,
-    osFormatos USER-DEFINED,
-    osTypeMidiaTemplate USER-DEFINED
+    osCategoria text,
+    osMaterial text,
+    osFormatos osFormatos,
+    osTypeMidiaTemplate osTypeMidia
 );
 
 CREATE TABLE IF NOT EXISTS "Ofertas" (
@@ -438,14 +438,14 @@ CREATE TABLE IF NOT EXISTS "Render" (
     mBackgroundEstatica uuid,
     renderNoticado boolean DEFAULT false,
     postAgendado boolean DEFAULT false,
-    osStatusRender USER-DEFINED,
+    osStatusRender text,
     sateliteTemplateFormatoId uuid,
-    osFormatos USER-DEFINED,
+    osFormatos osFormatos,
     previewMidiaId uuid,
     empresa uuid,
     updatedAt timestamp with time zone,
     createdAt timestamp without time zone DEFAULT (now() AT TIME ZONE 'America/Sao_Paulo'::text),
-    osTypeMidia USER-DEFINED,
+    osTypeMidia osTypeMidia,
     templateFormatoId uuid
 );
 
@@ -462,15 +462,15 @@ CREATE TABLE IF NOT EXISTS "SateliteCamposFormPreviewMidia" (
 );
 
 CREATE TABLE IF NOT EXISTS "SatelitePreviewMidiaTemplate" (
-    osTypeMidiaTemplate USER-DEFINED,
+    osTypeMidiaTemplate osTypeMidia,
     fieldCreatomate text,
     previewMidiaId uuid NOT NULL,
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    osFormatos USER-DEFINED,
+    osFormatos osFormatos,
     filterCelebridade text,
     templateFormatoId uuid,
-    osCategoria USER-DEFINED,
-    osMaterial USER-DEFINED,
+    osCategoria text,
+    osMaterial text,
     created_at timestamp without time zone DEFAULT now(),
     MMidiasId uuid NOT NULL,
     templateId uuid NOT NULL,
@@ -478,11 +478,11 @@ CREATE TABLE IF NOT EXISTS "SatelitePreviewMidiaTemplate" (
 );
 
 CREATE TABLE IF NOT EXISTS "SateliteTemplateFormato" (
-    osTypeMidia USER-DEFINED,
+    osTypeMidia osTypeMidia,
     name text,
     idCreatomateTemplate text,
     urlThumb text,
-    categoriaSelecionada USER-DEFINED,
+    categoriaSelecionada text,
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     selectClientFront boolean DEFAULT false,
     previewMidiaId uuid NOT NULL,
@@ -491,7 +491,7 @@ CREATE TABLE IF NOT EXISTS "SateliteTemplateFormato" (
     templateFormatoSetupId uuid NOT NULL,
     active boolean,
     created_at timestamp without time zone DEFAULT now(),
-    osFormatos USER-DEFINED
+    osFormatos osFormatos
 );
 
 CREATE TABLE IF NOT EXISTS "Template" (
