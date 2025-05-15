@@ -7,63 +7,63 @@ CREATE EXTENSION IF NOT EXISTS "vector";
 
 -- Create custom types
 DO $$ BEGIN
-    CREATE TYPE osStatus AS ENUM ('Ativo', 'Inativo');
+    CREATE TYPE "osStatus" AS ENUM ('Ativo', 'Inativo');
 EXCEPTION
     WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
-    CREATE TYPE osFormatos AS ENUM ('16x9', '9x16', '1x1', '4x5');
+    CREATE TYPE "osFormatos" AS ENUM ('16x9', '9x16', '1x1', '4x5');
 EXCEPTION
     WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
-    CREATE TYPE user_status AS ENUM ('PENDING', 'ACTIVE', 'INACTIVE');
+    CREATE TYPE "user_status" AS ENUM ('PENDING', 'ACTIVE', 'INACTIVE');
 EXCEPTION
     WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
-    CREATE TYPE osTypeMidia AS ENUM ('BACKGROUND', 'CABECA', 'ASSINATURA', 'BACKGROUND_OFERTA');
+    CREATE TYPE "osTypeMidia" AS ENUM ('BACKGROUND', 'CABECA', 'ASSINATURA', 'BACKGROUND_OFERTA');
 EXCEPTION
     WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
-    CREATE TYPE osTypeNotification AS ENUM ('RENDER_COMPLETE', 'RENDER_ERROR');
+    CREATE TYPE "osTypeNotification" AS ENUM ('RENDER_COMPLETE', 'RENDER_ERROR');
 EXCEPTION
     WHEN duplicate_object THEN null;
 END $$;
 
 -- Create sequences
-CREATE SEQUENCE IF NOT EXISTS documents_id_seq;
-CREATE SEQUENCE IF NOT EXISTS n8n_chat_histories_id_seq;
+CREATE SEQUENCE IF NOT EXISTS "documents_id_seq";
+CREATE SEQUENCE IF NOT EXISTS "n8n_chat_histories_id_seq";
 
 -- Create tables
 CREATE TABLE IF NOT EXISTS "Ads" (
-    contaAdsId uuid,
-    ultimoInsigthValorGasto numeric,
-    campanhaId uuid,
-    contaPlataforma uuid,
-    creator text,
-    templateText text,
-    name text,
-    urlMidia text,
-    createdDate date DEFAULT CURRENT_DATE,
-    empresa uuid,
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    notaAds integer,
-    tipoAnuncioId uuid,
-    idAds text,
-    ultimoInsigthCpc numeric,
-    ultimoInsigthClicks numeric,
-    ultimoInsigthCpm numeric,
-    ultimoInsigthAlcance numeric,
-    ultimoInsigthCtr numeric,
-    ultimoInsigthImpressao numeric,
-    grupoAnuncioId uuid,
-    ultimoInsigthTempoVisualizacao numeric
+    "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+    "creator" text,
+    "empresa" uuid,
+    "createdDate" date DEFAULT CURRENT_DATE,
+    "idAds" text,
+    "contaAdsId" uuid,
+    "templateText" text,
+    "grupoAnuncioId" uuid,
+    "name" text,
+    "notaAds" integer,
+    "tipoAnuncioId" uuid,
+    "ultimoInsigthCpc" numeric,
+    "ultimoInsigthClicks" numeric,
+    "ultimoInsigthCpm" numeric,
+    "ultimoInsigthAlcance" numeric,
+    "ultimoInsigthCtr" numeric,
+    "ultimoInsigthImpressao" numeric,
+    "ultimoInsigthTempoVisualizacao" numeric,
+    "ultimoInsigthValorGasto" numeric,
+    "campanhaId" uuid,
+    "contaPlataforma" uuid,
+    "urlMidia" text
 );
 
 CREATE TABLE IF NOT EXISTS "AjusteCampanha" (
