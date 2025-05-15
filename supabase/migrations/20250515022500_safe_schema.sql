@@ -463,19 +463,19 @@ CREATE TABLE IF NOT EXISTS "SateliteCamposFormPreviewMidia" (
 );
 
 CREATE TABLE IF NOT EXISTS "SatelitePreviewMidiaTemplate" (
-    osTypeMidiaTemplate osTypeMidia,
-    fieldCreatomate text,
-    previewMidiaId uuid NOT NULL,
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    osFormatos osFormatos,
-    filterCelebridade text,
-    templateFormatoId uuid,
-    osCategoria text,
-    osMaterial text,
-    created_at timestamp without time zone DEFAULT now(),
-    MMidiasId uuid NOT NULL,
-    templateId uuid NOT NULL,
-    urlFile text
+    "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+    "previewMidiaId" uuid NOT NULL,
+    "templateId" uuid NOT NULL,
+    "MMidiasId" uuid NOT NULL,
+    "created_at" timestamp without time zone DEFAULT now(),
+    "osMaterial" "osTypeMidia",
+    "osCategoria" "osTypeMidia",
+    "osTypeMidiaTemplate" "osTypeMidia",
+    "osFormatos" "osFormatos",
+    "urlFile" text,
+    "fieldCreatomate" text,
+    "templateFormatoId" uuid,
+    "filterCelebridade" text
 );
 
 CREATE TABLE IF NOT EXISTS "SateliteTemplateFormato" (
@@ -815,21 +815,21 @@ CREATE TABLE IF NOT EXISTS "viewSocialAccount" (
 );
 
 CREATE TABLE IF NOT EXISTS "viewSocialAccounts_ads" (
-    name text,
-    email text,
-    provider_id text,
-    ad_title text,
-    ad_id uuid,
-    ad_created_at timestamp with time zone,
-    ad_updated_at timestamp with time zone,
-    user_id uuid,
-    ad_description text,
-    status user_status,
-    pictureUrl text,
-    provider text,
-    social_account_id uuid,
-    social_account_created_at timestamp with time zone,
-    social_account_updated_at timestamp with time zone
+    "social_account_id" uuid,
+    "provider" text,
+    "provider_id" text,
+    "social_account_created_at" timestamp with time zone,
+    "social_account_updated_at" timestamp with time zone,
+    "user_id" uuid,
+    "email" text,
+    "name" text,
+    "pictureUrl" text,
+    "status" "user_status",
+    "ad_id" uuid,
+    "ad_title" text,
+    "ad_description" text,
+    "ad_created_at" timestamp with time zone,
+    "ad_updated_at" timestamp with time zone
 );
 
 CREATE TABLE IF NOT EXISTS "view_contas_plataforma" (
