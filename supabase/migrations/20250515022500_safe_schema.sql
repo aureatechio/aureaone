@@ -320,18 +320,18 @@ CREATE TABLE IF NOT EXISTS "Ofertas" (
 );
 
 CREATE TABLE IF NOT EXISTS "PaginasAnuncio" (
-    nomePagina text,
-    idContaAds text,
-    idPagina text,
-    status osStatus DEFAULT 'Ativo',
-    instagranId uuid,
-    contaBusinessPaginaId uuid,
-    createdDate date DEFAULT CURRENT_DATE,
-    empresa uuid,
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    accessToken text,
-    creator text,
-    pictureUrl text
+    "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+    "creator" text,
+    "empresa" uuid,
+    "createdDate" date DEFAULT CURRENT_DATE,
+    "idPagina" text,
+    "nomePagina" text,
+    "contaBusinessPaginaId" uuid,
+    "instagranId" uuid,
+    "pictureUrl" text,
+    "accessToken" text,
+    "status" "osStatus" DEFAULT 'Ativo',
+    "idContaAds" text
 );
 
 CREATE TABLE IF NOT EXISTS "Plataformas" (
