@@ -256,18 +256,18 @@ CREATE TABLE IF NOT EXISTS "GruposAds" (
 );
 
 CREATE TABLE IF NOT EXISTS "Instagram" (
-    nomeUsuario text,
-    creator text,
-    access_token text,
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    empresa uuid,
-    createdDate date DEFAULT CURRENT_DATE,
-    status osStatus NOT NULL DEFAULT 'Ativo',
-    idContaAds text,
-    fotoPerfil text,
-    idIdentificacao text,
-    idAnuncio text,
-    nomeInstagran text
+    "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+    "creator" text,
+    "empresa" uuid,
+    "createdDate" date DEFAULT CURRENT_DATE,
+    "idAnuncio" text,
+    "nomeInstagran" text,
+    "idIdentificacao" text,
+    "fotoPerfil" text,
+    "nomeUsuario" text,
+    "access_token" text,
+    "status" "osStatus" NOT NULL DEFAULT 'Ativo',
+    "idContaAds" text
 );
 
 CREATE TABLE IF NOT EXISTS "LocalizacaoAnuncios" (
