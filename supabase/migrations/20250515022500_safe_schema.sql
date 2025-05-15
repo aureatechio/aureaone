@@ -286,24 +286,24 @@ CREATE TABLE IF NOT EXISTS "MCategoria" (
 );
 
 CREATE TABLE IF NOT EXISTS "MMidias" (
-    ativo boolean,
-    createdBy character varying,
-    templateFormatoId uuid,
-    createdDate timestamp without time zone DEFAULT now(),
-    nameFile character varying(255),
-    urlFile character varying,
-    filterCelebridade text,
-    thumbUrl text,
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    indexFile integer,
-    fieldCreatomate text,
-    active boolean DEFAULT true,
-    templateId uuid,
-    categoryId uuid,
-    osCategoria text,
-    osMaterial text,
-    osFormatos osFormatos,
-    osTypeMidiaTemplate osTypeMidia
+    "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+    "nameFile" character varying,
+    "urlFile" character varying,
+    "indexFile" integer,
+    "active" boolean DEFAULT true,
+    "thumbUrl" text,
+    "templateId" uuid,
+    "templateFormatoId" uuid,
+    "createdBy" character varying,
+    "createdDate" timestamp without time zone DEFAULT now(),
+    "categoryId" uuid,
+    "osCategoria" "osTypeMidia",
+    "osMaterial" "osTypeMidia",
+    "osFormatos" "osFormatos",
+    "fieldCreatomate" text,
+    "ativo" boolean,
+    "osTypeMidiaTemplate" "osTypeMidia",
+    "filterCelebridade" text
 );
 
 CREATE TABLE IF NOT EXISTS "Ofertas" (
