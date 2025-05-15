@@ -814,6 +814,19 @@ SELECT
   p."status"::osStatus as "status"
 FROM "PaginasAnuncio" p
 
+CREATE OR REPLACE VIEW public."viewSocialAccount2" AS
+SELECT 
+  p."contaBusinessPaginaId" as "idContaBusiness",
+  p."creator" as "criador",
+  p."pictureUrl" as "fotoPerfil",
+  p."idPagina" as "idPagina",
+  p."nomePagina" as "nomePagina",
+  p."accessToken" as "tokenAcesso",
+  p."id" as "id",
+  p."empresa" as "empresa",
+  p."status"::osStatus as "status"
+FROM "PaginasAnuncio" p
+
 CREATE TABLE IF NOT EXISTS "viewSocialAccounts_ads" (
     name text,
     email text,
