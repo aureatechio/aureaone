@@ -358,26 +358,26 @@ CREATE TABLE IF NOT EXISTS "PreviewMidia" (
     templateId uuid,
     filterCeleb text,
     categoriaSelecionada text,
-    listMAssinatura ARRAY,
+    listMAssinatura text[],
     textoLegal text,
     creator text,
-    listMBackgroundOfertas ARRAY,
-    listMCabeca ARRAY,
+    listMBackgroundOfertas text[],
+    listMCabeca text[],
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     testeMauro jsonb,
     editFinalizada boolean,
     createdDate timestamp without time zone DEFAULT now(),
     mSelo character varying(255),
-    listRender ARRAY,
-    listOfertas ARRAY,
+    listRender text[],
+    listOfertas text[],
     osStatusFilme character varying(50),
     geoLocalizacao text,
     empresa uuid,
-    listMaterial ARRAY,
-    listMCelebridades ARRAY,
+    listMaterial text[],
+    listMCelebridades text[],
     listPraca text,
-    listMBackgroundOferta ARRAY,
-    listTypeMidia ARRAY,
+    listMBackgroundOferta text[],
+    listTypeMidia text[],
     uuid uuid
 );
 
@@ -495,10 +495,10 @@ CREATE TABLE IF NOT EXISTS "SateliteTemplateFormato" (
 );
 
 CREATE TABLE IF NOT EXISTS "Template" (
-    listMmidias ARRAY,
-    osTypeMidia ARRAY,
-    osMaterial ARRAY,
-    collumn ARRAY,
+    listMmidias text[],
+    osTypeMidia text[],
+    osMaterial text[],
+    collumn text[],
     createdDate timestamp without time zone DEFAULT now(),
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     active boolean DEFAULT true,
@@ -517,8 +517,8 @@ CREATE TABLE IF NOT EXISTS "TemplateFormatoSetup" (
     active boolean DEFAULT true,
     tiposCampanha uuid,
     creator uuid,
-    osTypeMidia USER-DEFINED,
-    osFormato USER-DEFINED DEFAULT '16x9'::osFormatos,
+    osTypeMidia osTypeMidia,
+    osFormato osFormatos DEFAULT '16x9'::osFormatos,
     templateId uuid DEFAULT gen_random_uuid(),
     editaCelebridade boolean,
     editarOferta boolean,
@@ -624,7 +624,7 @@ CREATE TABLE IF NOT EXISTS "documentsaureaai" (
     content text,
     metadata jsonb,
     id bigint NOT NULL DEFAULT nextval('documents_id_seq'::regclass),
-    embedding USER-DEFINED
+    embedding vector(1536)
 );
 
 CREATE TABLE IF NOT EXISTS "interessesAnuncios" (
@@ -650,7 +650,7 @@ CREATE TABLE IF NOT EXISTS "logNotificacao" (
     creator text,
     id uuid NOT NULL DEFAULT gen_random_uuid(),
     created_at timestamp with time zone NOT NULL DEFAULT (now() AT TIME ZONE 'America/Sao_Paulo'::text),
-    osTypeNotification USER-DEFINED,
+    osTypeNotification osTypeNotification,
     previewMidiaId uuid DEFAULT gen_random_uuid(),
     visualizado boolean DEFAULT false
 );
@@ -677,8 +677,8 @@ CREATE TABLE IF NOT EXISTS "mensagensChat" (
 );
 
 CREATE TABLE IF NOT EXISTS "midiasTeste" (
-    formato USER-DEFINED,
-    midiaType USER-DEFINED,
+    formato osFormatos,
+    midiaType osTypeMidia,
     url_midia text,
     thumbnail text,
     created_at timestamp with time zone NOT NULL DEFAULT now(),
@@ -736,8 +736,8 @@ CREATE TABLE IF NOT EXISTS "orders" (
 CREATE TABLE IF NOT EXISTS "postagens" (
     data_postagem timestamp with time zone DEFAULT now(),
     programado boolean,
-    midia_type USER-DEFINED,
-    formato USER-DEFINED,
+    midia_type osTypeMidia,
+    formato osFormatos,
     empresa uuid,
     created_at timestamp with time zone NOT NULL DEFAULT now(),
     id uuid NOT NULL DEFAULT gen_random_uuid(),
@@ -752,7 +752,7 @@ CREATE TABLE IF NOT EXISTS "postagens" (
     id_social_account text,
     descricao text,
     id_campanha uuid,
-    traffic_type USER-DEFINED
+    traffic_type text
 );
 
 CREATE TABLE IF NOT EXISTS "products" (
